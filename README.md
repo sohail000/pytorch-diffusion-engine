@@ -4,6 +4,12 @@ A complete, from-scratch implementation of [Stable Diffusion v1.5](https://huggi
 
 Built for **deep understanding**, not just usage. Every tensor shape is annotated. Every architectural decision is documented.
 
+prompt = "a castle on a mountain, oil painting",
+uncond_prompt = "ugly, blurry"
+
+<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8d9f8f8a-7e50-4f01-86e8-6f2cd194716a" />
+
+
 ---
 
 ## Architecture
