@@ -1,6 +1,6 @@
-# Stable Diffusion — From Scratch in PyTorch
+# Stable Diffusion - From Scratch in PyTorch
 
-A complete, from-scratch implementation of [Stable Diffusion v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) in pure PyTorch. Every component — CLIP text encoder, VAE encoder/decoder, U-Net with cross-attention, and noise schedulers — is implemented manually with no dependency on `diffusers` or `stable-diffusion` libraries.
+A complete, from-scratch implementation of [Stable Diffusion v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) in pure PyTorch. Every component - CLIP text encoder, VAE encoder/decoder, U-Net with cross-attention, and noise schedulers - is implemented manually with no dependency on `diffusers` or `stable-diffusion` libraries.
 
 Built for **deep understanding**, not just usage. Every tensor shape is annotated. Every architectural decision is documented.
 
@@ -94,7 +94,7 @@ device = "cuda"  # or "mps" for Apple Silicon, "cpu" for CPU
 tokenizer = CLIPTokenizer("data/vocab.json", merges_file="data/merges.txt")
 models = preload_models_from_standard_weights("data/v1-5-pruned-emaonly.ckpt", device)
 
-# Generate — using DDIM (fast, 20 steps)
+# Generate - using DDIM (fast, 20 steps)
 image = generate(
     prompt="a beautiful sunset over mountains, oil painting, highly detailed",
     uncond_prompt="ugly, blurry, low quality",
@@ -232,7 +232,7 @@ Flash Attention (PyTorch 2.0+) is auto-detected and provides ~30% speedup with ~
 1. **CLIP** encodes your text prompt into a sequence of 77 embeddings (768-dim each)
 2. The **U-Net** starts from pure noise and iteratively denoises it, guided by the text embeddings via cross-attention
 3. At each step, the U-Net predicts the noise to remove. The **sampler** uses this prediction to compute the next (less noisy) state
-4. **Classifier-Free Guidance** runs the U-Net twice (with and without text) and amplifies the difference — this is why `cfg_scale` controls how strongly the image follows your prompt
+4. **Classifier-Free Guidance** runs the U-Net twice (with and without text) and amplifies the difference - this is why `cfg_scale` controls how strongly the image follows your prompt
 5. The final denoised latent is decoded by the **VAE Decoder** back into a 512×512 RGB image
 
 ## Acknowledgments
